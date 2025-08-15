@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love 🌸</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #ffe6f0, #fff0f5);
+        overflow: hidden;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Petals Animation */
+    .petal {
+        position: absolute;
+        top: -10px;
+        background: pink;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(-10px) rotate(0deg); }
+        100% { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    /* Center Bouquet */
+    .bouquet {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        animation: bloom 1.5s ease-out forwards;
+        max-width: 80%;
+        height: auto;
+    }
+
+    @keyframes bloom {
+        0% { transform: translate(-50%, -50%) scale(0); }
+        100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    /* Text */
+    .message {
+        position: absolute;
+        bottom: 40px;
+        width: 100%;
+        text-align: center;
+        font-size: 1.4em;
+        color: #d63384;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px white;
+    }
+</style>
+</head>
+<body>
+
+<!-- Bouquet -->
+<img src="IMG_2506.png" class="bouquet" alt="Bouquet">
+
+<!-- Message -->
+<div class="message">Just for you 💖 You mean the world to me</div>
+
+<script>
+    // Generate random petals
+    function createPetal() {
+        const petal = document.createElement("div");
+        const size = Math.random() * 10 + 8 + "px";
+        petal.classList.add("petal");
+        petal.style.width = size;
+        petal.style.height = size;
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = Math.random() * 5 + 5 + "s";
+        document.body.appendChild(petal);
+
+        setTimeout(() => {
+            petal.remove();
+        }, 10000);
+    }
+
+    setInterval(createPetal, 300);
+</script>
+
+</body>
+</html>
